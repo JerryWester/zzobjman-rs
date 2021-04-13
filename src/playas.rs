@@ -1,4 +1,7 @@
+extern crate clap;
+extern crate regex;
 use clap::ArgMatches;
+// use regex::Regex;
 use std::{fs, process};
 use std::path::Path;
 
@@ -10,7 +13,6 @@ pub fn exec_playas(sub_matches:  &ArgMatches) {
     let bank_arg = Path::new(sub_matches.value_of("bank").unwrap());
     let _zobj_arg = sub_matches.is_present("zobj");
 
-    
     let _convert_zobj_file = match fs::read(input_arg) {
         Ok(file) => file,
         Err(error) => {
@@ -36,4 +38,8 @@ pub fn exec_playas(sub_matches:  &ArgMatches) {
     };
 
     let _playas_zobj_file: Vec<u8> = Vec::new();
+}
+
+fn _manifest_parse(file: String) {
+    let mut _manifest = file;
 }
