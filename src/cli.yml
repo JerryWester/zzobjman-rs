@@ -1,0 +1,46 @@
+name: zzobjman-rs
+version: "0.1.0"
+author: Jerry Wester <jerrywester@yahoo.com>
+about: zzobjman in rust!
+subcommands:
+    - playas:
+        name: playas
+        about: Playas tool
+        args:
+            - rom:
+                short: r
+                long: rom
+                value_name: FILE.z64
+                help: Enable ROM output, takes a decompressed ROM file
+                takes_value: true
+            - output:
+                short: o
+                long: output
+                value_name: OUT_NAME
+                help: Output name, OUT_NAME is appended with .zobj for object if -z is specified and .z64 for ROM if -r is specified
+                takes_value: true
+            - manifest:
+                short: m
+                long: manifest
+                value_name: MANIFEST.txt
+                help: Manifest file, i.e. 'adult-link.txt'
+                required: true
+                takes_value: true
+            - input:
+                short: i
+                long: input
+                value_name: CONVERT_ZOBJ.zobj
+                help: zzconvert zobj with playas data
+                required: true
+                takes_value: true
+            - bank:
+                short: b
+                long: bank
+                value_name: BANK_ZOBJ.zobj
+                help: Bank zobj supplied with manifest, i.e. 'object_link_boy_optimized.zobj'
+                required: true
+                takes_value: true
+            - zobj:
+                short: z
+                long: zobj
+                help: Enable zobj output
