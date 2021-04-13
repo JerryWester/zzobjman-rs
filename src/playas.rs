@@ -1,7 +1,6 @@
 use clap::ArgMatches;
-use std::fs;
+use std::{fs, process};
 use std::path::Path;
-use std::process;
 
 pub fn exec_playas(sub_matches:  &ArgMatches) {
     let _rom_arg = Path::new(sub_matches.value_of("rom").unwrap_or_default());
@@ -11,6 +10,7 @@ pub fn exec_playas(sub_matches:  &ArgMatches) {
     let bank_arg = Path::new(sub_matches.value_of("bank").unwrap());
     let _zobj_arg = sub_matches.is_present("zobj");
 
+    
     let _convert_zobj_file = match fs::read(input_arg) {
         Ok(file) => file,
         Err(error) => {
