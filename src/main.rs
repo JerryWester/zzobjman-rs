@@ -1,9 +1,19 @@
 #[macro_use]
 extern crate clap;
+#[macro_use]
+extern crate lazy_static;
 use clap::App;
 mod playas;
 
 fn main() {
+    #[cfg(not(debug_assertions))]
+    panic::set_hook(Box::new(|panic_info| {
+        if let Some(s) = panic_info.payload().downcast_ref::<&str>() {
+            println!("panic occurred: {:?}", s);
+        } else {
+            println!("panic occurred");
+        }
+    }));
     let yaml = load_yaml!("cli.yml");
     let mut app = App::from_yaml(yaml);
     
